@@ -7,25 +7,27 @@ class Command(BaseCommand):
 
     def handle(self, *a, **kw):
         steptypes = (
-            ('demo-basement', StepType.DAYS, False),
-            ('demo-first', StepType.DAYS, False),
-            ('demo-second', StepType.DAYS, False),
-            ('mold-basement', StepType.HOURS, True),
-            ('mold-first', StepType.HOURS, True),
-            ('mold-second', StepType.HOURS, True),
-            ('foundation', StepType.HOURS, True),
-            ('framing', StepType.HOURS, True),
-            ('plumbing', StepType.HOURS, True),
-            ('electrical', StepType.HOURS, True),
-            ('hvac', StepType.HOURS, True),
-            ('drywall', StepType.DAYS, False),
-            ('carpentry', StepType.DAYS, False),
-            ('flooring', StepType.DAYS, False),
-            ('painting', StepType.DAYS, False),
+            ('demo-basement', 'Demolition (Basement)', StepType.DAYS, False),
+            ('demo-first', 'Demolition (First)', StepType.DAYS, False),
+            ('demo-second', 'Demolition (Second)', StepType.DAYS, False),
+            ('mold-basement', 'Mold (Basement)', StepType.HOURS, True),
+            ('mold-first', 'Mold (First)', StepType.HOURS, True),
+            ('mold-second', 'Mold (Second)', StepType.HOURS, True),
+            ('foundation', 'Foundation', StepType.HOURS, True),
+            ('framing', 'Framing', StepType.HOURS, True),
+            ('plumbing', 'Plumbing', StepType.HOURS, True),
+            ('electrical', 'Electrical', StepType.HOURS, True),
+            ('hvac', 'HVAC', StepType.HOURS, True),
+            ('drywall', 'Drywall', StepType.DAYS, False),
+            ('carpentry', 'Carpentry', StepType.DAYS, False),
+            ('flooring', 'Flooring', StepType.DAYS, False),
+            ('painting', 'Painting', StepType.DAYS, False),
         )
 
-        for t, u, s in steptypes:
+        for i, (l, t, u, s) in enumerate(steptypes):
             StepType.objects.create(
+                slug=l,
                 title=t,
+                weight=i,
                 unit=u,
                 skilled=s)

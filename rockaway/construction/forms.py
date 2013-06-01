@@ -30,10 +30,13 @@ class BaseStepForm(forms.Form):
     start_date = forms.DateField(required=False)
     end_date = forms.DateField(required=False)
 
+    def get_time_unit(self):
+        return StepType.objects.get(slug=self.work_type).get_unit_display()
+
     def save(self, assessment):
         obj = WorkStep()
         obj.assessment = assessment
-        obj.work_type = StepType.objects.get(title=self.work_type)
+        obj.work_type = StepType.objects.get(slug=self.work_type)
         obj.scope = self.cleaned_data['scope']
         obj.description = self.cleaned_data['description']
         obj.permit_required = self.cleaned_data['permit']
