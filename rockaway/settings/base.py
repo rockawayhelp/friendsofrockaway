@@ -116,7 +116,7 @@ ROOT_URLCONF = 'rockaway.urls'
 WSGI_APPLICATION = 'rockaway.wsgi.application'
 
 TEMPLATE_DIRS = (
-    'templates',
+    path('templates'),
 )
 
 INSTALLED_APPS = (
@@ -131,6 +131,7 @@ INSTALLED_APPS = (
     'south',
 
     'rockaway.core',
+    'rockaway.construction',
 )
 
 # A sample logging configuration. The only tangible logging

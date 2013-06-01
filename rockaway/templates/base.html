@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>{% block title %}{% endblock %}</title>
+  <style>
+  body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    -webkit-overflow-scrolling: touch;
+  }
+  li.head {
+    font-size: 110%;
+    font-weight: bold;
+    margin-top: 1em;
+  }
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  ul.errorlist {
+    color: red;
+  }
+  textarea {
+    display: block;
+    height: 3.5em;
+    resize: vertical;
+    width: 100%;
+  }
+  </style>
+</head>
+
+<body>
+  <h1>{% block page_title %}{% endblock %}</h1>
+
+  {% block content %}
+  {% endblock %}
+
+</body>
+</html>
+

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Assessment Detail{% endblock %}
+{% block page_title %}{{ assessment.address }}{% endblock %}
+
+{% block content %}
+  <a href="{{ url('construction.assessment_list') }}">Back to list</a>
+  <dl>
+    <dt>Damage Assessment</dt>
+    <dd>{{ assessment.damage_assessment }}</dd>
+
+    <dt>Permits Required</dt>
+    <dd>{{ assessment.permits_required|yesno }}</dd>
+
+    {% if assessment.permits_required %}
+      <dt>Permits</dt>
+      <dd>{{ assessment.permits }}</dd>
+    {% endif %}
+
+    <dt>Notes</dt>
+    <dd>{{ assessment.notes }}</dd>
+
+    {% for step in assessment.workstep_set.all() %}
+    {% endfor %}
+  </dl>
+{% endblock %}

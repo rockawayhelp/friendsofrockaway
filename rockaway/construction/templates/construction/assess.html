@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}New Assessment{% endblock %}
+{% block page_title %}New Assessment{% endblock %}
+
+{% block content %}
+  <form method="post">
+    {{ csrf() }}
+    {% for g in forms %}
+      <h2>{{ g.heading }}</h2>
+
+      <ul>
+        {% for f in g.forms %}
+          {% if f.heading %}
+            <li class="head">{{ f.heading }}</li>
+          {% endif %}
+          {{ f.as_ul() }}
+        {% endfor %}
+      </ul>
+    {% endfor %}
+    <input type="submit" value="Save">
+  </form>
+{% endblock %}
