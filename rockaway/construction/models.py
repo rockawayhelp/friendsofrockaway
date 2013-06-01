@@ -25,6 +25,7 @@ class StepType(models.Model):
         (DAYS, 'Days'),
     )
 
+    slug = models.CharField(max_length=255, unique=True, null=True)
     title = models.CharField(max_length=255, unique=True)
     weight = models.IntegerField(default=1)
     unit = models.CharField(max_length=16, choices=UNITS)
