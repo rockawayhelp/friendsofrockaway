@@ -18,9 +18,34 @@
     {% endif %}
 
     <dt>Notes</dt>
-    <dd>{{ assessment.notes }}</dd>
+    <dd>{{ assessment.notes|orNA }}</dd>
 
     {% for step in assessment.workstep_set.all() %}
+      <dt>{{ step.work_type }}</dt>
+      <dd>
+        <dl>
+          <dt>Scope</dt>
+          <dd>{{ step.get_scope_display() }}</dd>
+
+          <dt>Description</dt>
+          <dd>{{ step.description }}</dd>
+
+          <dt>Time Required</dt>
+          <dd>{{ step.time_required }} {{ step.work_type.get_unit_display() }}</dd>
+
+          <dt>Permits Required?</dt>
+          <dd>{{ step.permit|yesno }}</dd>
+
+          <dt>Start Date</dt>
+          <dd>{{ step.start_date|orNA }}</dd>
+
+          <dt>End Date</dt>
+          <dd>{{ step.end_date|orNA }}</dd>
+
+          <dt>Progress</dt>
+          <dd>{{ step.get_progress_display() }}</dd>
+        </dl>
+      </dd>
     {% endfor %}
   </dl>
 {% endblock %}
