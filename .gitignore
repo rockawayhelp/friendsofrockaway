@@ -1,3 +1,4 @@
 *.py[co]
 *.swp
 rockaway/settings/local.py
+.venv
